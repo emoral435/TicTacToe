@@ -6,11 +6,35 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/dist/output.css">
+    <link rel="icon" href="./checkmark copy.gif">
     <title>Tic-Tac-Toe</title>
 </head>
 
 <body>
-    <h1 class="text-7xl font-extrabold">Hello</h1>
+    <div class="h-[100vh] w-[100%] grid grid-rows-[2fr_7fr_1fr]">
+        <header class="grid justify-center items-center bg-[#00154f] text-[#f4af1b] text-9xl font-[Didot]">
+            Tic-Tac-Toe
+        </header>
+        <main class="bg-[#f2bc94] grid justify-center items-center">
+            <div id="grid"
+                class="grid grid-cols-[repeat(3,175px)] bg-stone-300 border border-black grid-rows-[repeat(3,175px)] text-[12rem] leading-[0rem]">
+                <div class="border border-black grid justify-center items-center">X</div>
+                <div class="border border-black grid justify-center items-center">X</div>
+                <div class="border border-black grid justify-center items-center">X</div>
+                <div class="border border-black grid justify-center items-center">X</div>
+                <div class="border border-black grid justify-center items-center">X</div>
+                <div class="border border-black grid justify-center items-center">X</div>
+                <div class="border border-black grid justify-center items-center">X</div>
+                <div class="border border-black grid justify-center items-center">X</div>
+                <div class="border border-black grid justify-center items-center">X</div>
+            </div>
+        </main>
+        <footer class="bg-[#f2bc94] flex justify-center items-end">
+            <div class="mb-4">Curated by&nbsp;<a class="hover:text-white"
+                    href="https://github.com/emoral435">emoral435</a>
+            </div>
+        </footer>
+    </div>
     <script src="/src/app.js"></script>
 </body>
 
