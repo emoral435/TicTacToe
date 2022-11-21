@@ -1,3 +1,8 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.toggle {
+    border-width: 2px;
+    border-color: #00154f;
+}
