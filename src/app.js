@@ -15,7 +15,7 @@ const Player = (symbol, id) => {
 }
 
 const player1 = Player('X', 'Player1')
-const player2 = Player('O', 'Player2')
+const player2 = Player('O', 'Player2') // make the player objects
 let counter = 0
 
 // ControlGame module, that controls the flow of the game
@@ -43,7 +43,7 @@ const ControlGame = ((player1, player2, Gameboard) => {
         } 
     }
     
-    const clearEventsOnBoard =(() => {
+    const clearEventsOnBoard =(() => { // clears events on the board so that every click does not trigger according to the amount of games there has been played
         const board = document.querySelectorAll('.tictac')
         board.forEach( (square) => {
             let newSquare = square.cloneNode(true)
@@ -51,7 +51,7 @@ const ControlGame = ((player1, player2, Gameboard) => {
         })
     })
 
-    const addToArray = (square) => {
+    const addToArray = (square) => { // adds to the array at the index of the dataset of the board!
         if ((counter % 2) === 0) {
             Gameboard.board[parseInt(square.dataset.id)] = player1.symbol
         } else {
@@ -59,7 +59,7 @@ const ControlGame = ((player1, player2, Gameboard) => {
         }
     }
 
-    const checkforTrue = (array) => {
+    const checkforTrue = (array) => { // checks if an array is true
         for (let i = 0; i < array.length; i++) {
             if (array[i] === true) {
                 return true
@@ -67,7 +67,7 @@ const ControlGame = ((player1, player2, Gameboard) => {
         }
     }
 
-    const makeCheckedArray1 = () => {
+    const makeCheckedArray1 = () => { // strict comparison for each slot
         const array = []
         if (Gameboard.board[0] === player1.symbol && Gameboard.board[1] === player1.symbol  && Gameboard.board[2] === player1.symbol) {
             array.push(true)
@@ -108,7 +108,7 @@ const ControlGame = ((player1, player2, Gameboard) => {
         } return array
     }
 
-    const check = () => {
+    const check = () => { // check if the player has won at every point of the game
         counter += 1
         if ((counter % 2) != 0) {
             if ( checkforTrue(makeCheckedArray1()) ) {
