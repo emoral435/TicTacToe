@@ -82,6 +82,20 @@ const ControlGame = ((player1, player2, Gameboard) => {
                 winDiv.textContent = 'Player 1 Won!'
                 clearEventsOnBoard()
             }
+        } else if ((counter % 2) != 0) {
+            let o1 = !Gameboard.board[0] && !Gameboard.board[1] && !Gameboard.board[2]
+            let o2 = !Gameboard.board[3] && !Gameboard.board[4] && !Gameboard.board[5]
+            let o3 = !Gameboard.board[6] && !Gameboard.board[7] && !Gameboard.board[8]
+            let o4 = !Gameboard.board[0] && !Gameboard.board[3] && !Gameboard.board[6]
+            let o5 = !Gameboard.board[1] && !Gameboard.board[4] && !Gameboard.board[7]
+            let o6 = !Gameboard.board[2] && !Gameboard.board[5] && !Gameboard.board[8]
+            let o7 = !Gameboard.board[2] && !Gameboard.board[4] && !Gameboard.board[6]
+            let o8 = !Gameboard.board[0] && !Gameboard.board[4] && !Gameboard.board[8]
+            let checkArray = [o1, o2, o3, o4, o5, o6, o7, o8]
+            if (checkforTrue(checkArray)) {
+                winDiv.textContent = 'Player 2 Won!'
+                clearEventsOnBoard()
+            }
         }
         // else if (counter === 9) {
         //     clearEventsOnBoard()
