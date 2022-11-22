@@ -10,8 +10,8 @@ const Player = (symbol, id) => {
         let div = document.getElementById(id)
         return div
     }
-    let wins = 0
-    return ({symbol, wins, getDiv})
+    let won = [true]
+    return ({symbol, won, getDiv})
 }
 
 const player1 = Player('X', 'Player1')
@@ -28,7 +28,6 @@ const ControlGame = ((player1, player2, Gameboard) => {
                 addToArray(square)
                 doStart(square)
                 check()
-                counter+=1
             })
         })
     }
@@ -43,7 +42,7 @@ const ControlGame = ((player1, player2, Gameboard) => {
             player2.getDiv().classList.toggle('toggle')
         } 
     }
-
+    
     const clearEventsOnBoard =(() => {
         const board = document.querySelectorAll('.tictac')
         board.forEach( (square) => {
@@ -54,9 +53,9 @@ const ControlGame = ((player1, player2, Gameboard) => {
 
     const addToArray = (square) => {
         if ((counter % 2) === 0) {
-            Gameboard.board[parseInt(square.dataset.id)] = true
+            Gameboard.board[parseInt(square.dataset.id)] = player1.symbol
         } else {
-            Gameboard.board[parseInt(square.dataset.id)] = false
+            Gameboard.board[parseInt(square.dataset.id)] = player2.symbol
         }
     }
 
@@ -67,42 +66,69 @@ const ControlGame = ((player1, player2, Gameboard) => {
             }
         }
     }
-    const check = () => {
-        if ((counter % 2) === 0) {
-            let o1 = Gameboard.board[0] && Gameboard.board[1] && Gameboard.board[2]
-            let o2 = Gameboard.board[3] && Gameboard.board[4] && Gameboard.board[5]
-            let o3 = Gameboard.board[6] && Gameboard.board[7] && Gameboard.board[8]
-            let o4 = Gameboard.board[0] && Gameboard.board[3] && Gameboard.board[6]
-            let o5 = Gameboard.board[1] && Gameboard.board[4] && Gameboard.board[7]
-            let o6 = Gameboard.board[2] && Gameboard.board[5] && Gameboard.board[8]
-            let o7 = Gameboard.board[2] && Gameboard.board[4] && Gameboard.board[6]
-            let o8 = Gameboard.board[0] && Gameboard.board[4] && Gameboard.board[8]
-            let checkArray = [o1, o2, o3, o4, o5, o6, o7, o8]
-            if (checkforTrue(checkArray)) {
-                winDiv.textContent = 'Player 1 Won!'
-                clearEventsOnBoard()
-            }
-        } else if ((counter % 2) != 0) {
-            let o1 = !Gameboard.board[0] && !Gameboard.board[1] && !Gameboard.board[2]
-            let o2 = !Gameboard.board[3] && !Gameboard.board[4] && !Gameboard.board[5]
-            let o3 = !Gameboard.board[6] && !Gameboard.board[7] && !Gameboard.board[8]
-            let o4 = !Gameboard.board[0] && !Gameboard.board[3] && !Gameboard.board[6]
-            let o5 = !Gameboard.board[1] && !Gameboard.board[4] && !Gameboard.board[7]
-            let o6 = !Gameboard.board[2] && !Gameboard.board[5] && !Gameboard.board[8]
-            let o7 = !Gameboard.board[2] && !Gameboard.board[4] && !Gameboard.board[6]
-            let o8 = !Gameboard.board[0] && !Gameboard.board[4] && !Gameboard.board[8]
-            let checkArray = [o1, o2, o3, o4, o5, o6, o7, o8]
-            if (checkforTrue(checkArray)) {
-                winDiv.textContent = 'Player 2 Won!'
-                clearEventsOnBoard()
-            }
-        }
-        // else if (counter === 9) {
-        //     clearEventsOnBoard()
-        // }
+
+    const makeCheckedArray1 = () => {
+        const array = []
+        if (Gameboard.board[0] === player1.symbol && Gameboard.board[1] === player1.symbol  && Gameboard.board[2] === player1.symbol) {
+            array.push(true)
+        } else if (Gameboard.board[3] === player1.symbol && Gameboard.board[4] === player1.symbol && Gameboard.board[5] === player1.symbol) {
+            array.push(true)
+        } else if (Gameboard.board[6] === player1.symbol && Gameboard.board[7] === player1.symbol && Gameboard.board[8] === player1.symbol) {
+            array.push(true)
+        } else if (Gameboard.board[0] === player1.symbol && Gameboard.board[3] === player1.symbol && Gameboard.board[6] === player1.symbol) {
+            array.push(true)
+        } else if (Gameboard.board[1] === player1.symbol && Gameboard.board[4] === player1.symbol && Gameboard.board[7] === player1.symbol) {
+            array.push(true)
+        } else if (Gameboard.board[2] === player1.symbol && Gameboard.board[5] === player1.symbol && Gameboard.board[8] === player1.symbol) {
+            array.push(true)
+        } else if (Gameboard.board[0] === player1.symbol && Gameboard.board[4] === player1.symbol && Gameboard.board[8] === player1.symbol) {
+            array.push(true)
+        } else if (Gameboard.board[2] === player1.symbol && Gameboard.board[4] === player1.symbol && Gameboard.board[6] === player1.symbol) {
+            array.push(true)
+        } return array
+    }
+    const makeCheckedArray2 = () => {
+        const array = []
+        if (Gameboard.board[0] === player2.symbol && Gameboard.board[1] === player2.symbol  && Gameboard.board[2] === player2.symbol) {
+            array.push(true)
+        } else if (Gameboard.board[3] === player2.symbol && Gameboard.board[4] === player2.symbol && Gameboard.board[5] === player2.symbol) {
+            array.push(true)
+        } else if (Gameboard.board[6] === player2.symbol && Gameboard.board[7] === player2.symbol && Gameboard.board[8] === player2.symbol) {
+            array.push(true)
+        } else if (Gameboard.board[0] === player2.symbol && Gameboard.board[3] === player2.symbol && Gameboard.board[6] === player2.symbol) {
+            array.push(true)
+        } else if (Gameboard.board[1] === player2.symbol && Gameboard.board[4] === player2.symbol && Gameboard.board[7] === player2.symbol) {
+            array.push(true)
+        } else if (Gameboard.board[2] === player2.symbol && Gameboard.board[5] === player2.symbol && Gameboard.board[8] === player2.symbol) {
+            array.push(true)
+        } else if (Gameboard.board[0] === player2.symbol && Gameboard.board[4] === player2.symbol && Gameboard.board[8] === player2.symbol) {
+            array.push(true)
+        } else if (Gameboard.board[2] === player2.symbol && Gameboard.board[4] === player2.symbol && Gameboard.board[6] === player2.symbol) {
+            array.push(true)
+        } return array
     }
 
-    return {start, clearEventsOnBoard}
+    const check = () => {
+        counter += 1
+        if ((counter % 2) != 0) {
+            if ( checkforTrue(makeCheckedArray1()) ) {
+                winDiv.textContent = 'You Won, X!~'
+                player1.won[0] = false
+                clearEventsOnBoard()
+            } 
+        } else if ((counter % 2) === 0) {
+            if ( checkforTrue(makeCheckedArray2()) ) {
+                winDiv.textContent = 'You Won, O!~'
+                player2.won[0] = false
+                clearEventsOnBoard()
+            } 
+        } else if (counter === 9) {
+            console.log('You tied! Reset the game')
+            clearEventsOnBoard()
+        }
+    }
+
+    return {start, clearEventsOnBoard, winDiv}
 })(player1, player2, Gameboard)
 
 // reset function button call
@@ -116,6 +142,11 @@ const reset = () => {
         }
         counter = 0
     })
+    ControlGame.winDiv.textContent  = ''
+    player1.won[0] = true
+    player2.won[0] = true
+    Gameboard.board = new Array(9)
+    ControlGame.clearEventsOnBoard()
     ControlGame.start()
 }
 
