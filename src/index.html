@@ -16,9 +16,9 @@
             Tic-Tac-Toe
         </header>
         <main class="bg-[#f2bc94] grid justify-center items-center">
-            <div class="flex justify-around items-center text-3xl">
-                <div id="Player1" class="px-2 py-2 toggle">X - Player 1</div>
-                <div id="Player2" class="px-2 py-2">Player 2 - O</div>
+            <div class="flex justify-around gap-20 items-center text-3xl">
+                <div id="Player1" class="p-2 toggle">X - Player 1</div>
+                <div id="Player2" class="p-2">Player 2 - O</div>
             </div>
             <div id="grid"
                 class="grid grid-cols-[repeat(3,175px)] bg-stone-300 border border-black grid-rows-[repeat(3,175px)] text-[12rem] leading-[0rem]">
@@ -31,6 +31,11 @@
                 <div class="border border-black grid justify-center items-center tictac" data-id="6"></div>
                 <div class="border border-black grid justify-center items-center tictac" data-id="7"></div>
                 <div class="border border-black grid justify-center items-center tictac" data-id="8"></div>
+            </div>
+            <div class="flex flex-col justify-center items-center">
+                <div id="Results" class="p-2 text-3xl font-[Didot]"></div>
+                <button class="bg-[#00154f] text-[#f4af1b] hover:text-[#f2bc94] text-3xl font-[Didot] py-1 w-32"
+                    onclick="reset()">Reset</button>
             </div>
         </main>
         <footer class="bg-[#f2bc94] flex justify-center items-end">

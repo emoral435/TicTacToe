@@ -533,6 +533,14 @@ video {
   width: 100%;
 }
 
+.w-24 {
+  width: 6rem;
+}
+
+.w-32 {
+  width: 8rem;
+}
+
 .grid-cols-\[repeat\(3\2c 175px\)\] {
   grid-template-columns: repeat(3,175px);
 }
@@ -543,6 +551,10 @@ video {
 
 .grid-rows-\[repeat\(3\2c 175px\)\] {
   grid-template-rows: repeat(3,175px);
+}
+
+.flex-col {
+  flex-direction: column;
 }
 
 .items-end {
@@ -559,6 +571,14 @@ video {
 
 .justify-around {
   justify-content: space-around;
+}
+
+.gap-20 {
+  gap: 5rem;
+}
+
+.gap-32 {
+  gap: 8rem;
 }
 
 .border {
@@ -585,6 +605,10 @@ video {
   background-color: rgb(214 211 209 / var(--tw-bg-opacity));
 }
 
+.p-2 {
+  padding: 0.5rem;
+}
+
 .px-2 {
   padding-left: 0.5rem;
   padding-right: 0.5rem;
@@ -593,6 +617,21 @@ video {
 .py-2 {
   padding-top: 0.5rem;
   padding-bottom: 0.5rem;
+}
+
+.px-3 {
+  padding-left: 0.75rem;
+  padding-right: 0.75rem;
+}
+
+.py-4 {
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
+
+.py-1 {
+  padding-top: 0.25rem;
+  padding-bottom: 0.25rem;
 }
 
 .font-\[Didot\] {
@@ -613,6 +652,11 @@ video {
   font-size: 12rem;
 }
 
+.text-xl {
+  font-size: 1.25rem;
+  line-height: 1.75rem;
+}
+
 .leading-\[0rem\] {
   line-height: 0rem;
 }
@@ -630,4 +674,9 @@ video {
 .hover\:text-white:hover {
   --tw-text-opacity: 1;
   color: rgb(255 255 255 / var(--tw-text-opacity));
+}
+
+.hover\:text-\[\#f2bc94\]:hover {
+  --tw-text-opacity: 1;
+  color: rgb(242 188 148 / var(--tw-text-opacity));
 }
